@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 
 import androidx.annotation.Nullable;
@@ -16,7 +17,7 @@ public class KhoanChiActivity extends AppCompatActivity {
     private Button btnkhoanthu,btnBackHome;
     private TextView addTags;
     private Spinner spinnerTags;
-
+    private ImageButton backHome;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +25,7 @@ public class KhoanChiActivity extends AppCompatActivity {
         btnkhoanthu = (Button) findViewById(R.id.khoanthu) ;
         btnBackHome = (Button) findViewById(R.id.btnBack) ;
         addTags = (TextView) findViewById(R.id.addTags) ;
+        backHome=(ImageButton) findViewById(R.id.backHome);
 //        spinnerTags = (Spinner) findViewById(R.id.spiner) ;
         btnkhoanthu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +52,13 @@ public class KhoanChiActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent  = new Intent(KhoanChiActivity.this,ChiActivity.class);
+                startActivity(intent);
+            }
+        });
+        backHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(KhoanChiActivity.this,PageHomeActivity.class);
                 startActivity(intent);
             }
         });

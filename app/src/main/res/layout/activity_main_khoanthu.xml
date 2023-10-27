@@ -9,75 +9,105 @@
     android:background="@drawable/backgroup"
     >
 
+    <LinearLayout
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="1dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/gradient_title"
+        tools:layout_editor_absoluteY="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/backHome"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="left"
+            android:layout_marginLeft="20dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/baseline_home_24"
+            tools:ignore="SpeakableTextPresentCheck" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="28dp"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:gravity="center_horizontal"
+            android:text="Thêm khoản thu"/>
+
+        <ImageButton
+            android:id="@+id/tabmenu"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+
+            android:layout_weight="0.5"
+            android:background="@android:color/transparent"
+            android:src="@drawable/baseline_density_medium_24"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/avt"
-        android:layout_width="137dp"
-        android:layout_height="115dp"
-        android:layout_marginTop="52dp"
+        android:layout_width="205dp"
+        android:layout_height="173dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
 
-        android:layout_marginEnd="136dp"
-        android:src="@drawable/img_2"
+        android:src="@drawable/img"
+        app:layout_constraintBottom_toTopOf="@+id/luachon"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.742"
         tools:ignore="MissingConstraints" />
 
     <LinearLayout
         android:id="@+id/luachon"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-
-        android:layout_below="@+id/avt"
-        android:orientation="horizontal"
-
+        android:layout_height="wrap_content"
+        android:weightSum="4"
+        android:gravity="center_vertical|center_horizontal"
         app:layout_constraintBottom_toTopOf="@+id/card_view"
+        android:orientation="horizontal"
         >
-        <RelativeLayout
-            android:layout_width="150dp"
-            android:layout_height="70dp"
-            android:background="#ccffff"
+        <Button
+            android:id="@+id/khoanchi"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="4dp"
             android:layout_marginLeft="30dp"
-            >
-
-            <Button
-                android:id="@+id/khoanchi"
-                android:layout_width="146dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
-                android:layout_gravity="center"
-                android:layout_marginStart="4dp"
-                android:layout_marginLeft="30dp"
-                android:backgroundTint="#ccffFF"
-                android:text="Khoản chi mới"
-                android:textColor="@color/black"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-
-
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="150dp"
-            android:layout_height="70dp"
-            android:background="@drawable/botron"
+            android:layout_weight="1"
+            android:backgroundTint="@color/blue"
+            android:text="Khoản chi mới"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+        <Button
+            android:id="@+id/khoanthu"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_marginStart="2dp"
             android:layout_marginLeft="30dp"
-
-            >
-
-            <Button
-                android:id="@+id/khoanthu"
-                android:layout_width="148dp"
-                android:layout_height="70dp"
-                android:layout_alignParentStart="true"
-                android:layout_gravity="center"
-                android:layout_marginStart="2dp"
-                android:layout_marginLeft="30dp"
-                android:backgroundTint="#0000FF"
-                android:text="Khoản thu mới"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-
-
-        </RelativeLayout>
+            android:backgroundTint="#ccffff"
+            android:text="Khoản thu mới"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
 
     </LinearLayout>
@@ -172,10 +202,12 @@
             <TextView
                 android:id="@+id/addTags"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginRight="30dp"
                 android:layout_marginLeft="30dp"
-                android:text="Thêm"
+                android:text="Click để chọn"
                 android:textSize="16dp"
+                android:textStyle="bold"
                 android:gravity="center"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -209,7 +241,7 @@
                     android:layout_width="150dp"
                     android:layout_height="40dp"
 
-                    android:backgroundTint="@color/white"
+                    android:backgroundTint="#ccffff"
                     android:text="&lt;&lt; Quay lại"
                     android:textColor="@color/black"
                     android:textSize="16dp"
@@ -221,7 +253,7 @@
                     android:layout_width="150dp"
                     android:layout_height="40dp"
                     android:layout_alignParentRight="true"
-                    android:backgroundTint="@color/white"
+                    android:backgroundTint="#ccffff"
                     android:text="Tiếp tục &gt;&gt; "
                     android:textColor="@color/black"
                     android:textSize="16dp"
