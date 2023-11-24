@@ -8,16 +8,18 @@
 
     android:background="@drawable/backgroup"
     >
-
     <LinearLayout
         android:id="@+id/line1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/gradient_title"
         android:orientation="horizontal"
+        tools:layout_editor_absoluteX="1dp"
+        android:paddingTop="10dp"
         android:paddingBottom="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/gradient_title"
+        tools:layout_editor_absoluteY="1dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -30,17 +32,16 @@
             android:background="@android:color/transparent"
             android:src="@drawable/baseline_home_24"
             tools:ignore="SpeakableTextPresentCheck" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:padding="10dp"
-            android:text="Thêm khoản chi"
-            android:textColor="@color/white"
             android:textSize="28dp"
-            android:textStyle="bold" />
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:gravity="center_horizontal"
+            android:text="Thêm khoản chi"/>
 
         <ImageButton
             android:id="@+id/tabmenu"
@@ -52,8 +53,6 @@
             android:src="@drawable/baseline_density_medium_24"
             tools:ignore="SpeakableTextPresentCheck" />
     </LinearLayout>
-
-
     <ImageView
         android:id="@+id/avt"
         android:layout_width="205dp"
@@ -64,10 +63,12 @@
         android:src="@drawable/img"
         app:layout_constraintBottom_toTopOf="@+id/luachon"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.742"
         tools:ignore="MissingConstraints" />
+
 
     <LinearLayout
         android:id="@+id/luachon"

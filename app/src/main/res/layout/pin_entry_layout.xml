@@ -79,9 +79,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="560dp"
+        android:layout_marginBottom="604dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/logo" />
 
@@ -217,13 +218,24 @@
 
     <Button
         android:id="@+id/login"
-        android:layout_width="92dp"
-        android:layout_height="45dp"
-        android:layout_marginEnd="264dp"
-        android:layout_marginBottom="44dp"
-        android:text="Login"
+        android:layout_width="125dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="32dp"
+        android:text="Xác nhận"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.895"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thiết lập mật khẩu"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="174dp" />
 
     <!--    <GridLayout-->
     <!--        android:id="@+id/keyboardGrid"-->

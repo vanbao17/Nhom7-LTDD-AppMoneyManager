@@ -37,14 +37,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/nameUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="84dp"
         android:layout_marginEnd="116dp"
-        android:text="PHẠM VĂN BẢO"
         android:textColor="#fff"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -96,10 +95,13 @@
         android:layout_height="100dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="192dp"
         android:background="@drawable/circle_shape"
         android:src="@drawable/target"
-        tools:layout_editor_absoluteX="255dp"
-        tools:layout_editor_absoluteY="436dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.807"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/btnhistory"
@@ -107,10 +109,13 @@
         android:layout_height="100dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="192dp"
         android:background="@drawable/circle_shape"
         android:src="@drawable/money"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="436dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.196"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/circle_imageview4"
@@ -119,10 +124,13 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="56dp"
         android:background="@drawable/circle_shape"
         android:src="@drawable/iconhistory"
-        tools:layout_editor_absoluteX="155dp"
-        tools:layout_editor_absoluteY="574dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView4"

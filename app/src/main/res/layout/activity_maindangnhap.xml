@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".LoginActivity"
     android:background="@drawable/backgroup"
     >
     <LinearLayout
@@ -30,7 +30,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:background="@drawable/edittext_border"
-            android:hint="Email or số điện thoại"
+            android:hint="Số điện thoại"
             android:textColorHint="#808080"
             android:padding="15dp"
             />

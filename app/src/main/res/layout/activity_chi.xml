@@ -33,7 +33,7 @@
             android:textSize="24dp"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:text="Nhóm khoản thu chi"/>
+            android:text="Nhóm khoản chi"/>
     </LinearLayout>
 
     <com.google.android.material.card.MaterialCardView

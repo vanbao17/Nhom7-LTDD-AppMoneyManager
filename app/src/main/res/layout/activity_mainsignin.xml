@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".SigninActivity"
     android:background="@drawable/backgroup"
     >
     <LinearLayout
@@ -30,21 +30,33 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:background="@drawable/edittext_border"
-            android:hint="Email or số điện thoại"
+            android:hint="Họ tên người dùng"
             android:textColorHint="#808080"
             android:padding="15dp"
             />
         <EditText
             android:layout_width="330dp"
             android:layout_height="60dp"
-            android:id="@+id/txtName"
+            android:id="@+id/txtPhone"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:background="@drawable/edittext_border"
-            android:hint="Họ và tên người dùng"
+            android:hint="Số điện thoại"
             android:textColorHint="#808080"
             android:padding="15dp"
             />
+
+        <EditText
+            android:id="@+id/txtEmail"
+            android:layout_width="330dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edittext_border"
+            android:hint="Email"
+            android:padding="15dp"
+            android:textColorHint="#808080" />
+
         <EditText
             android:layout_width="330dp"
             android:layout_height="60dp"
