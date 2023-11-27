@@ -75,10 +75,10 @@ public class KhoanThuActivity extends AppCompatActivity {
                     DatabaseReference nodeChaRef = myRef.child(phone);
 
                     String newKey = nodeChaRef.push().getKey();
-                    listHistory.add(new History(money, note, date.toString() , true, tag, phone));
-                    History his = new History(money, note, date.toString() , true, tag, phone);
+                    //listHistory.add(new History(money, note, date.toString() , true, tag, phone));
+                    //History his = new History(money, note, date.toString() , true, tag, phone);
 
-                    nodeChaRef.child(newKey).setValue(his);
+                    //nodeChaRef.child(newKey).setValue(his);
                     // Chuyển đến hoạt động mới (Activity)
                     Intent intent = new Intent(KhoanThuActivity.this, PageHomeActivity.class);
                     intent.putExtra("user", receivedUser);

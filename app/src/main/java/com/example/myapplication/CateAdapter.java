@@ -22,6 +22,7 @@ public class CateAdapter extends ArrayAdapter<ItemCate> {
     }
     UserSingleton userSingleton = UserSingleton.getInstance();
     UserEnity currentUser = userSingleton.getUser();
+    History history = userSingleton.getHistory();
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // Lấy dữ liệu cho item tại vị trí position
@@ -48,6 +49,9 @@ public class CateAdapter extends ArrayAdapter<ItemCate> {
                 Intent intent = new Intent(getContext(), KhoanChiActivity.class);
                 intent.putExtra("cate",  item);
                 intent.putExtra("user", currentUser);
+                if(history!=null) {
+                    intent.putExtra("itemHistory", history);
+                }
                 getContext().startActivity(intent);
             }
         });

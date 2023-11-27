@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 
 public class HistoryAdapter extends ArrayAdapter<History> {
@@ -19,6 +22,7 @@ public class HistoryAdapter extends ArrayAdapter<History> {
     UserSingleton userSingleton = UserSingleton.getInstance();
     UserEnity currentUser = userSingleton.getUser();
     public View getView(int position, View convertView, ViewGroup parent) {
+        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference().child("Khoan").child(currentUser.getPhone());
         // Lấy dữ liệu cho item tại vị trí position
         History item = getItem(position);
 
@@ -32,6 +36,17 @@ public class HistoryAdapter extends ArrayAdapter<History> {
         TextView textViewTitle = convertView.findViewById(R.id.textViewTitle);
         TextView textViewDate= convertView.findViewById(R.id.textViewDate);
         TextView textViewNote = convertView.findViewById(R.id.textViewNote);
+        TextView textViewDelete = convertView.findViewById(R.id.delete);
+        textViewDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                usersRef.child(item.getIdHistory()).removeValue();
+                Intent intent = new Intent(getContext(), HistoryActivity.class);
+                intent.putExtra("user", currentUser);
+                getContext().startActivity(intent);
+            }
+        });
+
         // Gán giá trị từ đối tượng ItemCate vào các phần tử của layout
         if (item != null) {
             textViewTitle.setText(item.getTitleStatus());
@@ -49,7 +64,9 @@ public class HistoryAdapter extends ArrayAdapter<History> {
             public void onClick(View v) {
                 // Chuyển đến hoạt động mới và truyền dữ liệu
                 Intent intent = new Intent(getContext(), KhoanChiActivity.class);
-                intent.putExtra("cate", String.valueOf(item.getTitleStatus()));
+                intent.putExtra("update", true);
+                intent.putExtra("itemHistory", item);
+                userSingleton.setHistory(item);
                 intent.putExtra("user", currentUser);
                 getContext().startActivity(intent);
             }

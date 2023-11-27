@@ -43,7 +43,7 @@ public class KhoanChiActivity extends AppCompatActivity {
 
     private Button btnkhoanthu,btnBackHome,btnSubmit;
     UserSingleton userSingleton = UserSingleton.getInstance();
-    private TextView addTags ,txtMoney,txtNote;
+    private TextView addTags ,txtMoney,txtNote,txtHead;
     private static TextView textDay,addTag;
     private Spinner spinnerTags;
     private ImageButton backHome;
@@ -55,14 +55,16 @@ public class KhoanChiActivity extends AppCompatActivity {
         //btnkhoanthu = (Button) findViewById(R.id.khoanthu) ;
         btnBackHome = (Button) findViewById(R.id.btnBack) ;
         btnSubmit = (Button) findViewById(R.id.btnSubmit) ;
-        addTags = (TextView) findViewById(R.id.addTags) ;
         backHome=(ImageButton) findViewById(R.id.backHome);
+        addTags = (TextView) findViewById(R.id.addTags) ;
         textDay = (TextView) findViewById(R.id.textday);
         txtMoney = (TextView) findViewById(R.id.txtMoney);
         txtNote = (TextView) findViewById(R.id.txtnote);
-        addTags = (TextView) findViewById(R.id.addTags);
+        txtHead = (TextView) findViewById(R.id.textHead);
+
         UserEnity receivedUser = (UserEnity) getIntent().getSerializableExtra("user");
         ItemCate itemcate = (ItemCate) getIntent().getSerializableExtra("cate");
+        //boolean update = (Boolean) getIntent().getSerializableExtra("update");
         String phone = receivedUser.getPhone();
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
@@ -76,6 +78,15 @@ public class KhoanChiActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Khoan");
 
+        History itemHistory = (History) getIntent().getSerializableExtra("itemHistory");
+        if(itemHistory!=null) {
+            //addTags.setText(itemHistory.getTitleStatus().toString());
+            textDay.setText(itemHistory.getDate().toString());
+            txtMoney.setText(itemHistory.getCount()*-1+"");
+            txtNote.setText(itemHistory.getNote().toString());
+            btnSubmit.setText("Cập nhật");
+            txtHead.setText("Sửa");
+        }
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,41 +103,63 @@ public class KhoanChiActivity extends AppCompatActivity {
                     Date d = inputFormat.parse(date.toString());
 
                     DatabaseReference nodeChaRef = myRef.child(phone);
-
-                    String newKey = nodeChaRef.push().getKey();
                     if(itemcate.isStatus()==false ){
                         money = money*-1;
                     }
+                    if(itemHistory!=null) {
 
-                    listHistory.add(new History(money, note, outputFormat.format(d) , itemcate.isStatus(), tag, phone));
-                    History his = new History(money, note, outputFormat.format(d) , itemcate.isStatus(), tag, phone);
-
-
-
-                    DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("USERS").child(phone);
-                    int finalMoney = money;
-                    usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            if (dataSnapshot.exists()) {
-                                // Người dùng có tồn tại trong cơ sở dữ liệu
-                                UserEnity foundUser = dataSnapshot.getValue(UserEnity.class);
-                                foundUser.setTotal((int) (foundUser.getTotal()+ finalMoney));
-                                usersRef.setValue(foundUser);
-                            } else {
-                                // Người dùng không tồn tại trong cơ sở dữ liệu
-                                Log.d("Firebase", "User not found");
+                        History newhis = new History(money, note, outputFormat.format(d) , itemcate.isStatus(), tag, phone,itemHistory.getIdHistory());
+                        int finalMoney = money;
+                        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("USERS").child(phone);
+                        usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                if (dataSnapshot.exists()) {
+                                    // Người dùng có tồn tại trong cơ sở dữ liệu
+                                    UserEnity foundUser = dataSnapshot.getValue(UserEnity.class);
+                                    foundUser.setTotal((int) (foundUser.getTotal()+ finalMoney));
+                                    usersRef.setValue(foundUser);
+                                } else {
+                                    // Người dùng không tồn tại trong cơ sở dữ liệu
+                                    Log.d("Firebase", "User not found");
+                                }
                             }
-                        }
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-                            // Xử lý lỗi nếu có
-                            Log.w("Firebase", "getUser:onCancelled", databaseError.toException());
-                        }
-                    });
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+                                // Xử lý lỗi nếu có
+                                Log.w("Firebase", "getUser:onCancelled", databaseError.toException());
+                            }
+                        });
+                        nodeChaRef.child(itemHistory.getIdHistory()).setValue(newhis);
+                    }
+                    else {
+                        String newKey = nodeChaRef.push().getKey();
+                        History his = new History(money, note, outputFormat.format(d) , itemcate.isStatus(), tag, phone,newKey);
+                        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("USERS").child(phone);
+                        int finalMoney = money;
+                        usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                if (dataSnapshot.exists()) {
+                                    // Người dùng có tồn tại trong cơ sở dữ liệu
+                                    UserEnity foundUser = dataSnapshot.getValue(UserEnity.class);
+                                    foundUser.setTotal((int) (foundUser.getTotal()+ finalMoney));
+                                    usersRef.setValue(foundUser);
+                                } else {
+                                    // Người dùng không tồn tại trong cơ sở dữ liệu
+                                    Log.d("Firebase", "User not found");
+                                }
+                            }
 
-                    nodeChaRef.child(newKey).setValue(his);
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+                                // Xử lý lỗi nếu có
+                                Log.w("Firebase", "getUser:onCancelled", databaseError.toException());
+                            }
+                        });
+                        nodeChaRef.child(newKey).setValue(his);
+                    }
                     // Chuyển đến hoạt động mới (Activity)
                     Intent intent = new Intent(KhoanChiActivity.this, HistoryActivity.class);
                     intent.putExtra("user", receivedUser);
@@ -167,6 +200,9 @@ public class KhoanChiActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent  = new Intent(KhoanChiActivity.this,ChiActivity.class);
                 intent.putExtra("user",receivedUser);
+                if(itemHistory!=null) {
+                    userSingleton.setHistory(itemHistory);
+                }
                 startActivity(intent);
             }
         });

@@ -32,6 +32,7 @@
             android:src="@drawable/baseline_home_24"
             tools:ignore="SpeakableTextPresentCheck" />
         <TextView
+            android:id="@+id/textHead"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"

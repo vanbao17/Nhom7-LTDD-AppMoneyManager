@@ -9,6 +9,6 @@
         android:id="@+id/editTextInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nhập dữ liệu"/>
+        android:hint="Ví dụ : 1.000.000 "/>
 
 </LinearLayout>

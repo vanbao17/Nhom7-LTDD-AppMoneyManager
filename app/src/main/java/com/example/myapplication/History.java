@@ -1,9 +1,11 @@
 package com.example.myapplication;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class History {
+public class History implements Serializable {
     private int count;
+    private String idHistory;
     private String note;
     private String date;
     private Boolean status;
@@ -20,6 +22,14 @@ public class History {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public String getIdHistory() {
+        return idHistory;
+    }
+
+    public void setIdHistory(String idHistory) {
+        this.idHistory = idHistory;
     }
 
     public String getNote() {
@@ -62,13 +72,21 @@ public class History {
         this.phone = phone;
     }
 
+    public String getImage() {
+        return image;
+    }
 
-    public History(int count, String note, String date, Boolean status, String titleStatus, String phone) {
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public History(int count, String note, String date, Boolean status, String titleStatus, String phone, String idHistory) {
         this.count = count;
         this.note = note;
         this.date = date;
         this.status = status;
         this.titleStatus = titleStatus;
         this.phone = phone;
+        this.idHistory = idHistory;
     }
 }

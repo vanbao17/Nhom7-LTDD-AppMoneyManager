@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,6 +31,7 @@ public class PageHomeActivity extends AppCompatActivity {
     private String phoneUser;
     private UserEnity  receivedUser;
     UserSingleton userSingleton = UserSingleton.getInstance();
+    private int count = 0;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,13 +46,35 @@ public class PageHomeActivity extends AppCompatActivity {
         txtUsername = (TextView) findViewById(R.id.nameUser);
         receivedUser = (UserEnity) getIntent().getSerializableExtra("user");
         DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("USERS").child(receivedUser.getPhone());
+        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("Khoan/"+receivedUser.getPhone());
+
+        // Lắng nghe sự kiện khi dữ liệu thay đổi
+        databaseRef.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // Lấy dữ liệu từ DataSnapshot
+                for (DataSnapshot snapshot : dataSnapshot .getChildren()) {
+                    History data = snapshot.getValue(History.class);
+                    count = count + data.getCount();
+                }
+
+
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Xử lý khi có lỗi xảy ra
+            }
+        });
         usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     // Người dùng có tồn tại trong cơ sở dữ liệu
                     UserEnity foundUser = dataSnapshot.getValue(UserEnity.class);
-                    txtBudget.setText( Long.toString(foundUser.getTotal()));
+                    //int sum = (int) (foundUser.getTotal()+count);
+                    txtBudget.setText(foundUser.getTotal()+"");
                 } else {
                     // Người dùng không tồn tại trong cơ sở dữ liệu
                     Log.d("Firebase", "User not found");
@@ -63,6 +87,7 @@ public class PageHomeActivity extends AppCompatActivity {
                 Log.w("Firebase", "getUser:onCancelled", databaseError.toException());
             }
         });
+
         if (receivedUser != null) {
             txtUsername.setText(receivedUser.getUsername().toString());
 
@@ -179,7 +204,7 @@ public class PageHomeActivity extends AppCompatActivity {
         builder.setView(dialogView);
 
         // Thiết lập tiêu đề cho dialog
-        builder.setTitle("Nhập dữ liệu");
+        builder.setTitle("Nhập số tiền bạn đang có :");
 
         // Thiết lập nút tích cực (positive button)
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {

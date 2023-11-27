@@ -6,6 +6,7 @@ public class UserSingleton {
     private static UserSingleton instance;
     private UserEnity user;
     private ArrayList<History> histories;
+    private History history;
     private UserSingleton() {
         // Private constructor để ngăn chặn việc tạo thêm instances từ bên ngoài.
     }
@@ -34,5 +35,13 @@ public class UserSingleton {
 
     public void setHistories(ArrayList<History> histories) {
         this.histories = histories;
+    }
+
+    public History getHistory() {
+        return history;
+    }
+
+    public void setHistory(History history) {
+        this.history = history;
     }
 }
