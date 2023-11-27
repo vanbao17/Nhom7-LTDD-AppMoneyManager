@@ -35,6 +35,8 @@
         <activity android:name=".ThuActivity"></activity>
         <activity android:name=".ThongkeActivity"></activity>
         <activity android:name=".AboutUsActivity"></activity>
+        <activity android:name=".TargetInputActivity"></activity>
+        <activity android:name=".TargetAboutActivity"></activity>
     </application>
 
 </manifest>

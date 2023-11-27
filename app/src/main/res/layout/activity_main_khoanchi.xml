@@ -16,7 +16,6 @@
         tools:layout_editor_absoluteX="1dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:layout_marginTop="20dp"
         android:background="@drawable/gradient_title"
         tools:layout_editor_absoluteY="1dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,22 +52,22 @@
             android:src="@drawable/baseline_density_medium_24"
             tools:ignore="SpeakableTextPresentCheck" />
     </LinearLayout>
+
+
     <ImageView
         android:id="@+id/avt"
-        android:layout_width="205dp"
-        android:layout_height="173dp"
+        android:layout_width="217dp"
+        android:layout_height="157dp"
         android:layout_marginTop="16dp"
         android:background="@android:color/transparent"
 
         android:src="@drawable/img"
         app:layout_constraintBottom_toTopOf="@+id/luachon"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.742"
+        app:layout_constraintVertical_bias="0.779"
         tools:ignore="MissingConstraints" />
-
 
     <LinearLayout
         android:id="@+id/luachon"
@@ -78,38 +77,7 @@
         android:gravity="center_vertical|center_horizontal"
         app:layout_constraintBottom_toTopOf="@+id/card_view"
         android:orientation="horizontal"
-        >
-        <Button
-            android:id="@+id/khoanchi"
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_gravity="center"
-            android:layout_marginStart="4dp"
-            android:layout_marginLeft="30dp"
-            android:layout_weight="1"
-            android:backgroundTint="#ccffff"
-            android:text="Khoản chi mới"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            android:textStyle="bold" />
-        <Button
-            android:id="@+id/khoanthu"
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:layout_marginStart="2dp"
-            android:layout_marginLeft="30dp"
-            android:backgroundTint="@color/blue"
-            android:textColor="@color/white"
-            android:text="Khoản thu mới"
-            android:textSize="20dp"
-            android:textStyle="bold" />
-
-
-    </LinearLayout>
+        />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
@@ -138,7 +106,7 @@
                 />
 
             <EditText
-                android:id="@+id/input_money"
+                android:id="@+id/txtMoney"
                 android:layout_width="330dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center_horizontal"
@@ -177,8 +145,7 @@
                     android:layout_toEndOf="@+id/day"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/img_3"
-                    android:contentDescription="Nút hình ảnh của bạn"
-                    />
+                    android:onClick="showDatePickerDialog" />
 
                 <TextView
                     android:id="@+id/textday"
@@ -212,6 +179,7 @@
                 android:textSize="16dp"
                 android:textStyle="bold"
                 android:gravity="center"/>
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -253,12 +221,12 @@
                     tools:ignore="TouchTargetSizeCheck" />
 
                 <Button
-                    android:id="@+id/btnNext"
+                    android:id="@+id/btnSubmit"
                     android:layout_width="150dp"
                     android:layout_height="40dp"
                     android:layout_alignParentRight="true"
                     android:backgroundTint="#ccffff"
-                    android:text="Tiếp tục &gt;&gt; "
+                    android:text="Xác nhận &gt;&gt; "
                     android:textColor="@color/black"
                     android:textSize="16dp"
                     android:textStyle="bold"

@@ -17,7 +17,6 @@
         tools:layout_editor_absoluteX="1dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:layout_marginTop="20dp"
         android:background="@drawable/gradient_title"
         tools:layout_editor_absoluteY="1dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -138,7 +137,7 @@
                 />
 
             <EditText
-                android:id="@+id/input_money"
+                android:id="@+id/txtMoney"
                 android:layout_width="330dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center_horizontal"
@@ -175,8 +174,7 @@
                     android:layout_toEndOf="@+id/day"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/img_3"
-                    android:contentDescription="Nút hình ảnh của bạn"
-                    />
+                    android:onClick="showDatePickerDialog" />
 
                 <TextView
                     android:id="@+id/textday"
@@ -249,12 +247,12 @@
                     tools:ignore="TouchTargetSizeCheck" />
 
                 <Button
-                    android:id="@+id/btnNext"
+                    android:id="@+id/btnSubmit"
                     android:layout_width="150dp"
                     android:layout_height="40dp"
                     android:layout_alignParentRight="true"
                     android:backgroundTint="#ccffff"
-                    android:text="Tiếp tục &gt;&gt; "
+                    android:text="Xác nhận &gt;&gt; "
                     android:textColor="@color/black"
                     android:textSize="16dp"
                     android:textStyle="bold"

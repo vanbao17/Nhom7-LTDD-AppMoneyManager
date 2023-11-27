@@ -9,6 +9,8 @@ import android.widget.ImageButton;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class AccountActivity extends AppCompatActivity {
     private ImageButton home;
     private Button aboutus;
@@ -17,7 +19,7 @@ public class AccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
         home = (ImageButton) findViewById(R.id.home);
-        aboutus = (Button) findViewById(R.id.aboutus);
+        aboutus = (Button) findViewById(R.id.logout);
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -28,8 +30,13 @@ public class AccountActivity extends AppCompatActivity {
         aboutus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AccountActivity.this, AboutUsActivity.class);
-                startActivity(intent);
+                try {
+                    FirebaseAuth.getInstance().signOut();
+                    Intent intent = new Intent(AccountActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                }
+                catch (Exception e) {
+                }
             }
         });
     }

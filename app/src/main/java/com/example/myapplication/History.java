@@ -5,9 +5,14 @@ import java.util.Date;
 public class History {
     private int count;
     private String note;
-    private Date date;
+    private String date;
     private Boolean status;
     private String titleStatus;
+    private String phone;
+    private String image;
+    public History() {
+
+    }
 
     public int getCount() {
         return count;
@@ -25,11 +30,11 @@ public class History {
         this.note = note;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -49,11 +54,21 @@ public class History {
         this.titleStatus = titleStatus;
     }
 
-    public History(int count, String note, Date date, Boolean status, String titleStatus) {
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+
+    public History(int count, String note, String date, Boolean status, String titleStatus, String phone) {
         this.count = count;
         this.note = note;
         this.date = date;
         this.status = status;
         this.titleStatus = titleStatus;
+        this.phone = phone;
     }
 }

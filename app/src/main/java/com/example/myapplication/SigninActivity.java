@@ -23,6 +23,14 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.core.Tag;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.auth.User;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 public class SigninActivity extends AppCompatActivity {
     public Button btnLogin,btnSignUp;
     private EditText editEmail,editPassword,editName,editPhone;
@@ -39,6 +47,12 @@ public class SigninActivity extends AppCompatActivity {
         btnLogin = (Button) findViewById(R.id.btnLogin);
         progressDialog = new ProgressDialog(this);
         initListener();
+        ArrayList<ItemCate> listcate = new ArrayList<>();
+
+//        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//
+//        DatabaseReference myRef = database.getReference("CatetoriesThu");
+//        myRef.setValue(listcate);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +80,12 @@ public class SigninActivity extends AppCompatActivity {
         DatabaseReference usersRef = database.getReference("USERS");
         String Tag="";
         progressDialog.show();
+
+
+        // Khởi tạo Firestore
+
+
+
         auth.createUserWithEmailAndPassword(strEmail, strPassword)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -77,6 +97,8 @@ public class SigninActivity extends AppCompatActivity {
                             startActivity(intent);
                             String userId = usersRef.push().getKey();
                             UserEnity newUser = new UserEnity(userId, strName, strEmail,strPassword,strPhone,0);
+                            ArrayList<UserEnity> user = new ArrayList<>();
+                            user.add(newUser);
                             usersRef.child(strPhone).setValue(newUser);
                             finishAffinity();
                         } else {
@@ -87,5 +109,6 @@ public class SigninActivity extends AppCompatActivity {
                         }
                     }
                 });
+
     }
 }

@@ -12,7 +12,7 @@ public class UserEnity implements Serializable {
     public String email;
     public String password;
     public String phone;
-    public int total;
+    public long total;
     // Cần có constructor mặc định để sử dụng với Firebase
 
     public UserEnity() {
@@ -59,7 +59,7 @@ public class UserEnity implements Serializable {
         this.phone = phone;
     }
 
-    public int getTotal() {
+    public long getTotal() {
         return total;
     }
 
@@ -67,7 +67,7 @@ public class UserEnity implements Serializable {
         this.total = total;
     }
 
-    public UserEnity(String userId, String username, String email, String password, String phone, int total) {
+    public UserEnity(String userId, String username, String email, String password, String phone, long total) {
         this.userId = userId;
         this.username = username;
         this.email = email;
