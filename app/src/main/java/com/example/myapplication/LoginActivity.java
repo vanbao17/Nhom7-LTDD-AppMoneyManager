@@ -31,6 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 public class LoginActivity extends AppCompatActivity {
     private Button btnLogin, btnSignin,btnForgotPass;
     private EditText txtEmail, txtPassword;
+    UserSingleton userSingleton = UserSingleton.getInstance();
     private ProgressDialog progressDialog;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
         btnSignin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, PageHomeActivity.class);
+                Intent intent = new Intent(LoginActivity.this, SigninActivity.class);
                 startActivity(intent);
             }
         });
@@ -68,6 +69,7 @@ public class LoginActivity extends AppCompatActivity {
                             if(foundUser.getPassword().equals(strPassword)) {
                                 Intent intent = new Intent(LoginActivity.this,PageHomeActivity.class);
                                 progressDialog.dismiss();
+                                userSingleton.setUser(foundUser);
                                 intent.putExtra("user", foundUser);
                                 startActivity(intent);
                             }

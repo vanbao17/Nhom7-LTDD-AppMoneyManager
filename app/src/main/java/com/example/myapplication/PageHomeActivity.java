@@ -29,8 +29,9 @@ public class PageHomeActivity extends AppCompatActivity {
     private ImageView imageHistory,imageAdd,imageTarget,imagebiendong,imageAccount,imagethongke ;
     private TextView txtBudget,txtUsername;
     private String phoneUser;
-    private UserEnity  receivedUser;
+
     UserSingleton userSingleton = UserSingleton.getInstance();
+     UserEnity  receivedUser = userSingleton.getUser();
     private int count = 0;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -253,5 +254,4 @@ public class PageHomeActivity extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     };
-   }
-
+}

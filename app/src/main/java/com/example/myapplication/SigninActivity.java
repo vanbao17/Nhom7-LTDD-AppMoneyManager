@@ -97,6 +97,7 @@ public class SigninActivity extends AppCompatActivity {
                             startActivity(intent);
                             String userId = usersRef.push().getKey();
                             UserEnity newUser = new UserEnity(userId, strName, strEmail,strPassword,strPhone,0);
+
                             ArrayList<UserEnity> user = new ArrayList<>();
                             user.add(newUser);
                             usersRef.child(strPhone).setValue(newUser);

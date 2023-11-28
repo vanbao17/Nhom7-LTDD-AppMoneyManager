@@ -31,7 +31,7 @@ import java.util.Locale;
 public class ThongkeActivity extends AppCompatActivity {
     private ImageButton home;
     UserSingleton userSingleton = UserSingleton.getInstance();
-    UserEnity user = userSingleton.getUser();
+    UserEnity  receivedUser = userSingleton.getUser();
     private int thanghientai = 0;
     private int thangtruoc = 0;
     private int percenthientai = 0;
@@ -51,7 +51,7 @@ public class ThongkeActivity extends AppCompatActivity {
         int monthhientai = calendar.get(Calendar.MONTH) + 1;
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
 
-        DatabaseReference khoanRef = FirebaseDatabase.getInstance().getReference("Khoan").child(user.getPhone());
+        DatabaseReference khoanRef = FirebaseDatabase.getInstance().getReference("Khoan").child(receivedUser.getPhone());
         DatabaseReference chiRef = FirebaseDatabase.getInstance().getReference("CatetoriesChi");
         khoanRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -104,7 +104,7 @@ public class ThongkeActivity extends AppCompatActivity {
 
         ArrayList<ThongKeEntity> thongKeEntities = new ArrayList<>();
         ThongKeAdapter adapter = new ThongKeAdapter(this, thongKeEntities);
-        DatabaseReference khoanchiRef = FirebaseDatabase.getInstance().getReference("Khoan").child(user.getPhone());
+        DatabaseReference khoanchiRef = FirebaseDatabase.getInstance().getReference("Khoan").child(receivedUser.getPhone());
         chiRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -136,7 +136,6 @@ public class ThongkeActivity extends AppCompatActivity {
                                         thongKe.setImage(thu.getImage());
                                         thongKe.setDem(dem);
                                         int per = (int) Math.round(((double) his1.getCount() / thanghientai) * 100);
-                                        Toast.makeText(getApplicationContext(),per+"", Toast.LENGTH_SHORT).show();
                                         thongKe.setPercent(per+"%");
                                         thongKeEntities.add(thongKe);
                                     }
@@ -173,7 +172,7 @@ public class ThongkeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ThongkeActivity.this,PageHomeActivity.class);
-                intent.putExtra("user",user);
+                intent.putExtra("user",receivedUser);
                 startActivity(intent);
             }
         });

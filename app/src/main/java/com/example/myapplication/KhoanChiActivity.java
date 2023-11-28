@@ -70,7 +70,7 @@ public class KhoanChiActivity extends AppCompatActivity {
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH) + 1; // Tháng bắt đầu từ 0, nên cần cộng thêm 1
         int day = calendar.get(Calendar.DAY_OF_MONTH);
-        textDay.setText(day+"-"+month+"-"+year);
+        textDay.setText(day+"/"+month+"/"+year);
 
         if(itemcate!=null) {
             addTags.setText(itemcate.getTitle());
@@ -90,17 +90,22 @@ public class KhoanChiActivity extends AppCompatActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
                 try {
+
                     int money = Integer.parseInt(txtMoney.getText().toString());
                     String note = txtNote.getText().toString();
                     Date date = dateFormat.parse(textDay.getText().toString());
+                    Toast.makeText(KhoanChiActivity.this, "hehe", Toast.LENGTH_SHORT).show();
                     String tag = addTags.getText().toString();
-                    SimpleDateFormat inputFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss 'GMT'Z yyyy", Locale.getDefault());
-                    SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+
+                    SimpleDateFormat inputFormat = new SimpleDateFormat("EE MMM dd HH:mm:ss z yyyy");
+                    SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy");
                     inputFormat.setTimeZone(TimeZone.getTimeZone("GMT+7:00"));
-                    Date d = inputFormat.parse(date.toString());
+                    //Date d = inputFormat.parse(date.toString());
+
+
 
                     DatabaseReference nodeChaRef = myRef.child(phone);
                     if(itemcate.isStatus()==false ){
@@ -108,7 +113,7 @@ public class KhoanChiActivity extends AppCompatActivity {
                     }
                     if(itemHistory!=null) {
 
-                        History newhis = new History(money, note, outputFormat.format(d) , itemcate.isStatus(), tag, phone,itemHistory.getIdHistory());
+                        History newhis = new History(money, note, outputFormat.format(date) , itemcate.isStatus(), tag, phone,itemHistory.getIdHistory());
                         int finalMoney = money;
                         DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("USERS").child(phone);
                         usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -135,7 +140,7 @@ public class KhoanChiActivity extends AppCompatActivity {
                     }
                     else {
                         String newKey = nodeChaRef.push().getKey();
-                        History his = new History(money, note, outputFormat.format(d) , itemcate.isStatus(), tag, phone,newKey);
+                        History his = new History(money, note, outputFormat.format(date) , itemcate.isStatus(), tag, phone,newKey);
                         DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("USERS").child(phone);
                         int finalMoney = money;
                         usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -233,7 +238,7 @@ public class KhoanChiActivity extends AppCompatActivity {
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
             // Do something with the date chosen by the user
-            textDay.setText(day+"-"+month+"-"+year);
+            textDay.setText(day+"/"+month+"/"+year);
         }
     }
     public void showDatePickerDialog(View v) {
