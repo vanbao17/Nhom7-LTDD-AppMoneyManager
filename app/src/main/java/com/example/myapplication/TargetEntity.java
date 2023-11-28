@@ -1,8 +1,9 @@
 package com.example.myapplication;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class TargetEntity {
+public class TargetEntity implements Serializable {
     private String title;
     private long monney;
     private String dateBegin;

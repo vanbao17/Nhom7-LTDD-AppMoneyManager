@@ -65,7 +65,7 @@
         app:srcCompat="@drawable/xemayrmv" />
 
     <Button
-        android:id="@+id/btn_chitieu"
+        android:id="@+id/btnupdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="144dp"
@@ -79,11 +79,11 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btn_xoa"
+        app:layout_constraintEnd_toStartOf="@id/btndelete"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btn_xoa"
+        android:id="@+id/btndelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="148dp"
@@ -98,7 +98,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btn_chitieu" />
+        app:layout_constraintStart_toEndOf="@id/btnupdate" />
 
     <ImageView
         android:id="@+id/btnHome"
@@ -143,7 +143,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
         android:max="100"
-        android:progress="50"
+        android:progress="0"
         android:progressDrawable="@drawable/custom_seekbar_progress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"

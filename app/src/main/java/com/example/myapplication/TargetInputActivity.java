@@ -49,6 +49,13 @@ public class TargetInputActivity extends AppCompatActivity {
         DatabaseReference myRef = database.getReference("Targets");
         txtDateBegin.setText(day+"-"+month+"-"+year);
         txtDateFinish.setText(day+"-"+month+"-"+year);
+        TargetEntity targetUpdate = (TargetEntity) getIntent().getSerializableExtra("targetUpdate");
+        if(targetUpdate!=null) {
+            txtTitle.setText(targetUpdate.getTitle());
+            txtMonney.setText((int) targetUpdate.getMonney()+"");
+            txtDateBegin.setText(targetUpdate.getDateBegin());
+            txtDateFinish.setText(targetUpdate.getDateFinish());
+        }
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

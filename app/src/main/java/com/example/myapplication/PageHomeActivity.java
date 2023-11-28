@@ -125,7 +125,7 @@ public class PageHomeActivity extends AppCompatActivity {
                             startActivity(intent);
                         } else {
                             // Người dùng không tồn tại trong cơ sở dữ liệu
-                            Intent intent  = new Intent(PageHomeActivity.this,TargetInputActivity.class);
+                            Intent intent  = new Intent(PageHomeActivity.this,TargetActivity.class);
                             intent.putExtra("user",receivedUser);
                             startActivity(intent);
                         }
