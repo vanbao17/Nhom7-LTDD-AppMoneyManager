@@ -29,7 +29,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
-    private Button btnLogin, btnSignin;
+    private Button btnLogin, btnSignin,btnForgotPass;
     private EditText txtEmail, txtPassword;
     private ProgressDialog progressDialog;
     @Override
@@ -41,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         txtEmail = findViewById(R.id.txtUser);
         txtPassword = findViewById(R.id.txtPassword);
         progressDialog = new ProgressDialog(this);
+
         btnSignin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

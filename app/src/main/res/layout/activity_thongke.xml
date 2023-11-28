@@ -50,58 +50,38 @@
         android:layout_height="match_parent"
         android:background="@drawable/bg_gradient">
 
-        <RelativeLayout
-            android:id="@+id/head2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-            android:layout_marginRight="60dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/color_boder">
-            <Button
-                 android:state_pressed="true"
-                android:id="@+id/button1"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text="Tuần"
-                android:textSize="16dp"
-                android:backgroundTint="#C0C0C0"
-                android:textColor="@color/black"
-                android:gravity="center" />
-            <Button
-                android:id="@+id/button2"
-                android:layout_toRightOf="@+id/button1"
-                android:layout_width="120dp"
-                android:backgroundTint="#94b9ff"
-                android:layout_height="wrap_content"
-                android:text="Tháng"
-                android:textColor="@color/black"
-                android:textSize="16dp"
-                android:gravity="center"/>
-        </RelativeLayout>
 
-        <RelativeLayout
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tháng"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:gravity="center"/>
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp">
+
             <TextView
-                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sumChi"
+                android:layout_marginLeft="20dp"
+                android:text="tổng chi tiêu tháng này"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/sumChi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="5.000.000đ"
                 android:layout_marginLeft="60dp"
                 android:textSize="18dp"
                 android:textStyle="bold"/>
-            <TextView
-                android:layout_below="@+id/text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="tổng chi tiêu tháng này"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="60dp"
-                android:textSize="14dp"
-                />
-        </RelativeLayout>
+
+        </LinearLayout>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="210dp"
@@ -116,15 +96,15 @@
                 android:layout_marginBottom="30dp">
 
                 <TextView
-                    android:id="@+id/ptram1"
+                    android:id="@+id/colthangtruoc"
                     android:layout_width="80dp"
-                    android:layout_height="30dp"
+                    android:layout_height="0dp"
                     android:background="#DE0505" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/ptram1"
+                    android:layout_below="@+id/colthangtruoc"
                     android:textSize="16dp"
                     android:layout_marginTop="1dp"
                     android:text="Tháng trước" />
@@ -138,15 +118,15 @@
                 android:layout_marginBottom="30dp">
 
                 <TextView
-                    android:id="@+id/ptram2"
+                    android:id="@+id/colthangnay"
                     android:layout_width="80dp"
-                    android:layout_height="100dp"
+                    android:layout_height="0dp"
                     android:background="#DE0505" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/ptram2"
+                    android:layout_below="@+id/colthangnay"
                     android:layout_marginTop="1dp"
                     android:textSize="16dp"
                     android:text="Tháng này" />
@@ -169,7 +149,7 @@
 
 
             <ListView
-                android:id="@+id/lview"
+                android:id="@+id/lviewthongke"
                 android:layout_marginBottom="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />

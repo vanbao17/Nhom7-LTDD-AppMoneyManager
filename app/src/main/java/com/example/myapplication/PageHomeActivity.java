@@ -47,7 +47,7 @@ public class PageHomeActivity extends AppCompatActivity {
         receivedUser = (UserEnity) getIntent().getSerializableExtra("user");
         DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("USERS").child(receivedUser.getPhone());
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("Khoan/"+receivedUser.getPhone());
-
+        userSingleton.setHistory(null);
         // Lắng nghe sự kiện khi dữ liệu thay đổi
         databaseRef.addValueEventListener(new ValueEventListener() {
 
