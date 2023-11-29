@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PageHomeActivity"
-    >
+    tools:context=".PageHomeActivity">
     <!--    <TextView-->
     <!--        android:layout_width="wrap_content"-->
     <!--        android:layout_height="wrap_content"-->
@@ -16,10 +15,13 @@
     <!--        app:layout_constraintTop_toTopOf="parent" />-->
     <View
         android:id="@+id/view"
-        android:layout_width="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_height="200dp"
-        android:background="@drawable/backgroup"/>
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/backgroup"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView"
@@ -96,12 +98,23 @@
         android:layout_height="100dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="184dp"
+        android:layout_marginBottom="180dp"
         android:background="@drawable/circle_shape"
         android:src="@drawable/target"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.903"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/addthuchi"
+        android:layout_width="105dp"
+        android:layout_height="101dp"
+        android:layout_marginBottom="180dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/addicon" />
 
     <ImageView
         android:id="@+id/btnhistory"
@@ -109,11 +122,12 @@
         android:layout_height="100dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="32dp"
-        android:layout_marginBottom="184dp"
+        android:layout_marginBottom="180dp"
         android:background="@drawable/circle_shape"
         android:src="@drawable/money"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.099"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
@@ -128,7 +142,10 @@
         android:src="@drawable/iconhistory"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addthuchi"
+        app:layout_constraintVertical_bias="0.916" />
 
     <TextView
         android:id="@+id/textBudget"
@@ -190,15 +207,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/addthuchi"
-        android:layout_width="105dp"
-        android:layout_height="101dp"
-        android:layout_marginBottom="180dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/addicon" />
+
 
     <!-- Đặt ảnh của bạn vào đây -->
 
@@ -222,4 +231,10 @@
     <!--        &lt;!&ndash; Mỗi ô trong bàn phím sẽ được thêm vào đây &ndash;&gt;-->
 
     <!--    </GridLayout>-->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.27" />
 </androidx.constraintlayout.widget.ConstraintLayout>

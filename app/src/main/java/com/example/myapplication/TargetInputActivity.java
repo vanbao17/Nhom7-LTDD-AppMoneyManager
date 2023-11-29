@@ -47,8 +47,8 @@ public class TargetInputActivity extends AppCompatActivity {
         txtDateFinish = (TextView) findViewById(R.id.datefinish);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Targets");
-        txtDateBegin.setText(day+"-"+month+"-"+year);
-        txtDateFinish.setText(day+"-"+month+"-"+year);
+        txtDateBegin.setText(day+"/"+month+"/"+year);
+        txtDateFinish.setText(day+"/"+month+"/"+year);
         TargetEntity targetUpdate = (TargetEntity) getIntent().getSerializableExtra("targetUpdate");
         if(targetUpdate!=null) {
             txtTitle.setText(targetUpdate.getTitle());
@@ -64,19 +64,19 @@ public class TargetInputActivity extends AppCompatActivity {
                     String title = txtTitle.getText().toString();
                     int monney = Integer.parseInt(txtMonney.getText().toString());
 
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
                     SimpleDateFormat outputFormat;
                     Date datebegin = dateFormat.parse(txtDateBegin.getText().toString());
                     Date datefinish = dateFormat.parse(txtDateFinish.getText().toString());
 
-                    SimpleDateFormat inputFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss 'GMT'Z yyyy", Locale.getDefault());
-                    outputFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+                    SimpleDateFormat inputFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss 'GMT'Z yyyy");
+                    outputFormat = new SimpleDateFormat("dd/MM/yyyy");
                     inputFormat.setTimeZone(TimeZone.getTimeZone("GMT+7:00"));
-                    Date d = inputFormat.parse(datebegin.toString());
-                    Date d1 = inputFormat.parse(datefinish.toString());
+                    //Date d = inputFormat.parse(datebegin.toString());
+                    //Date d1 = inputFormat.parse(datefinish.toString());
 
 
-                    TargetEntity targetEntity = new TargetEntity(title, monney, outputFormat.format(d),outputFormat.format(d1));
+                    TargetEntity targetEntity = new TargetEntity(title, monney, outputFormat.format(datebegin),outputFormat.format(datefinish));
                     DatabaseReference nodeChaRef = myRef.child(currentUser.getPhone());
                     nodeChaRef.setValue(targetEntity);
 
@@ -109,7 +109,7 @@ public class TargetInputActivity extends AppCompatActivity {
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
             // Do something with the date chosen by the user
-            txtDateBegin.setText(day+"-"+month+"-"+year);
+            txtDateBegin.setText(day+"/"+month+"/"+year);
         }
     }
     public static class DatePickerFragment1 extends DialogFragment
@@ -129,7 +129,7 @@ public class TargetInputActivity extends AppCompatActivity {
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
             // Do something with the date chosen by the user
-            txtDateFinish.setText(day+"-"+month+"-"+year);
+            txtDateFinish.setText(day+"/"+month+"/"+year);
         }
     }
     public void showDatePickerDialog(View v) {

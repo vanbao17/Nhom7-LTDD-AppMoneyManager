@@ -62,7 +62,7 @@
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/title"
-        app:srcCompat="@drawable/xemayrmv" />
+        app:srcCompat="@drawable/logotarget" />
 
     <Button
         android:id="@+id/btnupdate"
