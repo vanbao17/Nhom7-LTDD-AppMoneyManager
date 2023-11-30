@@ -32,7 +32,9 @@
             android:gravity="center"
             android:textStyle="bold"
             android:padding="10px"
-            android:background="#ffff"/>
+            android:background="#ffff"
+
+            />
 
         <TextView
             android:id="@+id/khoanthu"

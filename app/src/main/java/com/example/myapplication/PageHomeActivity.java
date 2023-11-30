@@ -168,7 +168,7 @@ public class PageHomeActivity extends AppCompatActivity {
         imagethongke.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent  = new Intent(PageHomeActivity.this,ThongkeActivity.class);
+                Intent intent  = new Intent(PageHomeActivity.this, ThongkeActivity.class);
                 intent.putExtra("user",receivedUser);
                 startActivity(intent);
             }
