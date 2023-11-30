@@ -9,34 +9,39 @@
     <LinearLayout
         android:id="@+id/head"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:orientation="horizontal"
-        android:layout_marginTop="30dp">
+        android:background="@drawable/gradient_title"
+        >
 
         <ImageButton
-            android:id="@+id/home"
-            android:layout_width="45dp"
+            android:id="@+id/backHome"
+            android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="15dp"
-            android:background="@drawable/baseline_home_24"
-            />
-
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:alpha="0.71"
+            android:background="@drawable/baseline_home_24" />
         <TextView
+
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:text="THỐNG KÊ"
             android:gravity="center"
             android:textColor="@color/white"
             android:layout_gravity="center"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:text="Thống kê"/>
 
         <ImageButton
-            android:layout_width="45dp"
+            android:id="@+id/tabmenu"
+            android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginRight="15dp"
-            android:background="@drawable/menu"
-            />
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:alpha="0.71"
+            android:background="@drawable/baseline_menu_24" />
     </LinearLayout>
 
     <LinearLayout

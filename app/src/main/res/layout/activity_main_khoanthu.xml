@@ -12,46 +12,41 @@
     <LinearLayout
         android:id="@+id/line1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:orientation="horizontal"
-        tools:layout_editor_absoluteX="1dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
         android:background="@drawable/gradient_title"
-        tools:layout_editor_absoluteY="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
             android:id="@+id/backHome"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="left"
-            android:layout_marginLeft="20dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/baseline_home_24"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:alpha="0.71"
+            android:background="@drawable/baseline_home_24" />
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="28dp"
-            android:padding="10dp"
-            android:textStyle="bold"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center"
             android:textColor="@color/white"
-            android:gravity="center_horizontal"
+            android:layout_gravity="center"
+            android:textSize="25dp"
+            android:textStyle="bold"
             android:text="Thêm khoản thu"/>
 
         <ImageButton
             android:id="@+id/tabmenu"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-
-            android:layout_weight="0.5"
-            android:background="@android:color/transparent"
-            android:src="@drawable/baseline_density_medium_24"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:alpha="0.71"
+            android:background="@drawable/baseline_menu_24" />
     </LinearLayout>
 
     <ImageView
