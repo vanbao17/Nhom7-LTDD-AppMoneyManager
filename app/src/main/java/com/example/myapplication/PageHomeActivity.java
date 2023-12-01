@@ -98,7 +98,7 @@ public class PageHomeActivity extends AppCompatActivity {
         imageHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent  = new Intent(PageHomeActivity.this,ManagerActivity.class);
+                Intent intent  = new Intent(PageHomeActivity.this, MainActivityQuanLyChiTieu.class);
                 intent.putExtra("user",receivedUser);
                 startActivity(intent);
             }
