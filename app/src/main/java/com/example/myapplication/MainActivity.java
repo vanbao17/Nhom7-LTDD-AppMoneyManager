@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Intent intent = getIntent();
-        userName = (TextView) findViewById(R.id.nameUser);
+        //userName = (TextView) findViewById(R.id.nameUser);
         UserEnity receivedUser = (UserEnity) getIntent().getSerializableExtra("user");
         DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("USERS").child(receivedUser.getEmail());
         usersRef.addListenerForSingleValueEvent(new ValueEventListener() {

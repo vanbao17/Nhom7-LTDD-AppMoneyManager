@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -40,6 +40,8 @@
         <activity android:name=".ForgotPasswordActivity"></activity>
         <activity android:name=".HistoryDetailActivity"></activity>
         <activity android:name=".MainActivityQuanLyChiTieu"></activity>
+        <activity android:name=".NewsActivity"></activity>
+        <activity android:name=".WebViewActivity"></activity>
     </application>
 
 </manifest>

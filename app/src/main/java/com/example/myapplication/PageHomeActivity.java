@@ -26,7 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class PageHomeActivity extends AppCompatActivity {
     private static PageHomeActivity instance;
-    private ImageView imageHistory,imageAdd,imageTarget,imagebiendong,imageAccount,imagethongke ;
+    private ImageView imageHistory,imageAdd,imageTarget,imagebiendong,imageAccount,imagethongke ,testAPI;
     private TextView txtBudget,txtUsername;
     private String phoneUser;
 
@@ -44,6 +44,7 @@ public class PageHomeActivity extends AppCompatActivity {
         imageAccount = (ImageView) findViewById(R.id.account);
         imagethongke = (ImageView) findViewById(R.id.thongke);
         txtBudget = (TextView) findViewById(R.id.textBudget);
+        testAPI = (ImageView) findViewById(R.id.testapi);
         txtUsername = (TextView) findViewById(R.id.nameUser);
         receivedUser = (UserEnity) getIntent().getSerializableExtra("user");
         DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("USERS").child(receivedUser.getPhone());
@@ -169,6 +170,14 @@ public class PageHomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent  = new Intent(PageHomeActivity.this, ThongkeActivity.class);
+                intent.putExtra("user",receivedUser);
+                startActivity(intent);
+            }
+        });
+        testAPI.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent  = new Intent(PageHomeActivity.this, NewsActivity.class);
                 intent.putExtra("user",receivedUser);
                 startActivity(intent);
             }
