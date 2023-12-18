@@ -76,7 +76,7 @@ public class PageHomeActivity extends AppCompatActivity {
                     // Người dùng có tồn tại trong cơ sở dữ liệu
                     UserEnity foundUser = dataSnapshot.getValue(UserEnity.class);
                     //int sum = (int) (foundUser.getTotal()+count);
-                    txtBudget.setText(foundUser.getTotal()+"");
+                    txtBudget.setText(foundUser.getTotal()+count+"");
                 } else {
                     // Người dùng không tồn tại trong cơ sở dữ liệu
                     Log.d("Firebase", "User not found");

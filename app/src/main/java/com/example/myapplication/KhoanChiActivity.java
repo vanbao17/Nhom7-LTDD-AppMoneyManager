@@ -97,7 +97,6 @@ public class KhoanChiActivity extends AppCompatActivity {
                     int money = Integer.parseInt(txtMoney.getText().toString());
                     String note = txtNote.getText().toString();
                     Date date = dateFormat.parse(textDay.getText().toString());
-                    Toast.makeText(KhoanChiActivity.this, "hehe", Toast.LENGTH_SHORT).show();
                     String tag = addTags.getText().toString();
 
                     SimpleDateFormat inputFormat = new SimpleDateFormat("EE MMM dd HH:mm:ss z yyyy");
@@ -122,8 +121,8 @@ public class KhoanChiActivity extends AppCompatActivity {
                                 if (dataSnapshot.exists()) {
                                     // Người dùng có tồn tại trong cơ sở dữ liệu
                                     UserEnity foundUser = dataSnapshot.getValue(UserEnity.class);
-                                    foundUser.setTotal((int) (foundUser.getTotal()+ finalMoney));
-                                    usersRef.setValue(foundUser);
+                                    //foundUser.setTotal((int) (foundUser.getTotal()+ finalMoney));
+                                   // usersRef.setValue(foundUser);
                                 } else {
                                     // Người dùng không tồn tại trong cơ sở dữ liệu
                                     Log.d("Firebase", "User not found");
@@ -149,8 +148,8 @@ public class KhoanChiActivity extends AppCompatActivity {
                                 if (dataSnapshot.exists()) {
                                     // Người dùng có tồn tại trong cơ sở dữ liệu
                                     UserEnity foundUser = dataSnapshot.getValue(UserEnity.class);
-                                    foundUser.setTotal((int) (foundUser.getTotal()+ finalMoney));
-                                    usersRef.setValue(foundUser);
+                                    //foundUser.setTotal((int) (foundUser.getTotal()+ finalMoney));
+                                    //usersRef.setValue(foundUser);
                                 } else {
                                     // Người dùng không tồn tại trong cơ sở dữ liệu
                                     Log.d("Firebase", "User not found");
