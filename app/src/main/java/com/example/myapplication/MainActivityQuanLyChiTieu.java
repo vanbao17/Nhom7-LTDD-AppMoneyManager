@@ -61,7 +61,8 @@ public class MainActivityQuanLyChiTieu extends AppCompatActivity {
         imageView9 = findViewById(R.id.imageView9);
         // Khởi tạo Firebase
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("Quản lý chi tiêu");
+        UserEnity receivedUser = (UserEnity) getIntent().getSerializableExtra("user");
+        databaseReference = firebaseDatabase.getReference("Quản lý chi tiêu").child(receivedUser.getPhone());
 
         // Đặt sự kiện click cho nút
         showEditTextButton.setOnClickListener(new View.OnClickListener() {
